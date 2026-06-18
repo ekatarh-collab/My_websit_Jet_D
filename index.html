@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Бухгалтер рядом | Юлия — ваша финансовая опора</title>
+    <!-- Google Fonts: элегантные шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FFFBF7;  /* мягкий бежевый фон */
+            color: #3A2C2A;
+            line-height: 1.45;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* Цветовая палитра: бежевый → розовый → светло-зеленый */
+        :root {
+            --beige-light: #FFF2E6;
+            --beige: #FCE8D9;
+            --rose: #FFB7B2;
+            --rose-dark: #F39F9A;
+            --mint: #B5E3D5;
+            --mint-deep: #8BCDBD;
+            --text-dark: #4A3B36;
+            --text-soft: #77635C;
+            --white: #FFFFFF;
+            --shadow-sm: 0 12px 30px rgba(0,0,0,0.04);
+            --shadow-md: 0 20px 35px -12px rgba(0,0,0,0.08);
+        }
+
+        /* Общие стили разделов */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(245, 180, 165, 0.25);
+        }
+        section:last-child {
+            border-bottom: none;
+        }
+
+        /* ЗАГОЛОВКИ СТРОГО ПО ЦЕНТРУ */
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #6B4E42;
+            letter-spacing: -0.01em;
+            position: relative;
+            display: block;
+        }
+        h2:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--rose), var(--mint));
+            margin: 16px auto 0;
+            border-radius: 4px;
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #6B4E42;
+            margin-bottom: 0.75rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+            color: white;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 60px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--rose);
+            color: var(--rose-dark);
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            background: rgba(255, 183, 178, 0.1);
+            transform: translateY(-3px);
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #F5A49E, #E38A84);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ГЛАВНЫЙ ЭКРАН */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 48px;
+            padding: 30px 0 20px;
+        }
+        .hero-content {
+            flex: 1.2;
+        }
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.6rem;
+            font-weight: 800;
+            background: linear-gradient(115deg, #976B5E, #E29488, #7FBAA9);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+            margin-bottom: 1.4rem;
+        }
+        .hero-tag {
+            background: rgba(181, 227, 213, 0.4);
+            color: #6F5B53;
+            padding: 6px 14px;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--text-soft);
+            margin-bottom: 2rem;
+            max-width: 90%;
+        }
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+        .hero-photo {
+            flex: 0.8;
+            background: linear-gradient(145deg, #FFF1E8, #FFE4DA);
+            border-radius: 48px;
+            padding: 24px 20px 20px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+        .hero-photo img {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            border-radius: 40px;
+            object-fit: cover;
+            box-shadow: 0 20px 28px -12px rgba(0,0,0,0.15);
+            border: 4px solid white;
+        }
+        .photo-caption {
+            margin-top: 16px;
+            font-weight: 500;
+            color: #AD8C7C;
+        }
+
+        /* Карточки "Чем помогу" */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 40px;
+        }
+        .service-card {
+            background: white;
+            padding: 28px 24px;
+            border-radius: 36px;
+            transition: all 0.3s;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #FCE1D6;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--rose);
+            box-shadow: var(--shadow-md);
+        }
+        .service-icon {
+            font-size: 2.3rem;
+            color: var(--rose-dark);
+            margin-bottom: 18px;
+        }
+        .service-card ul {
+            list-style: none;
+            margin-top: 12px;
+        }
+        .service-card li {
+            margin-bottom: 10px;
+            padding-left: 24px;
+            position: relative;
+            color: #5A4640;
+        }
+        .service-card li:before {
+            content: "✓";
+            color: var(--mint-deep);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Преимущества */
+        .advantage-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+        .advantage-item {
+            background: #FFF7F2;
+            padding: 24px 20px;
+            border-radius: 32px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: all 0.2s;
+            border-bottom: 3px solid var(--mint);
+        }
+
+        /* КАЛЬКУЛЯТОР */
+        .calculator-modern {
+            background: white;
+            border-radius: 48px;
+            padding: 36px 32px;
+            box-shadow: var(--shadow-sm);
+            margin-top: 20px;
+        }
+        .calc-row {
+            margin-bottom: 28px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 20px;
+            justify-content: space-between;
+            border-bottom: 1px dashed #FFDDD2;
+            padding-bottom: 20px;
+        }
+        .calc-label {
+            font-weight: 700;
+            min-width: 200px;
+            font-size: 1.05rem;
+            color: #6B4E42;
+        }
+        select {
+            background: #FEF5F0;
+            padding: 12px 20px;
+            border-radius: 60px;
+            border: 1px solid #FFD8CD;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            cursor: pointer;
+            min-width: 220px;
+        }
+        .extra-services {
+            margin: 15px 0 20px 0;
+        }
+        /* Дополнительные услуги: строго одна колонка, левый отступ одинаковый */
+        .extra-services-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 12px;
+            width: 100%;
+        }
+        .extra-service-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #FEFAF7;
+            padding: 10px 18px;
+            border-radius: 60px;
+            transition: 0.1s;
+            width: 100%;
+            max-width: 400px;
+        }
+        .extra-service-item label {
+            font-weight: 500;
+            color: #4e3c35;
+            cursor: pointer;
+        }
+        .extra-service-item input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--rose);
+            margin-right: 6px;
+        }
+        .total-price-block {
+            background: linear-gradient(110deg, #FEF0EA, #FAE7E0);
+            padding: 24px;
+            border-radius: 40px;
+            text-align: center;
+            margin-top: 28px;
+        }
+        .total-price-block span {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #BC7A6A;
+            font-family: monospace;
+        }
+
+        /* Отзывы */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .review-card {
+            background: white;
+            border-radius: 32px;
+            padding: 28px;
+            box-shadow: var(--shadow-sm);
+            border-left: 6px solid var(--mint);
+        }
+        .review-text {
+            font-style: italic;
+            margin-bottom: 18px;
+            color: #5A4640;
+        }
+
+        /* Контактная форма */
+        .contact-form {
+            background: #FFF9F5;
+            border-radius: 56px;
+            padding: 40px;
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 60px;
+            border: 1px solid #FAD9CE;
+            background: white;
+            font-family: 'Inter', sans-serif;
+            transition: 0.2s;
+        }
+        textarea {
+            border-radius: 32px;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--rose);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 183, 178, 0.3);
+        }
+        .footer {
+            background: #6B5B55;
+            color: #F5E7E2;
+            padding: 48px 0 32px;
+            text-align: center;
+        }
+
+        @media (max-width: 850px) {
+            .container {
+                padding: 0 20px;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+            .hero {
+                flex-direction: column-reverse;
+            }
+            .hero-photo {
+                width: 80%;
+                margin: 0 auto;
+            }
+            .calc-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .extra-service-item {
+                max-width: 100%;
+            }
+        }
+        @media (max-width: 550px) {
+            section {
+                padding: 60px 0;
+            }
+            .calculator-modern {
+                padding: 24px 20px;
+            }
+        }
+        button {
+            background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<main>
+    <div class="container">
+        <!-- ГЛАВНЫЙ ЭКРАН с фото -->
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-tag"><i class="fas fa-leaf"></i> доверие · профессионализм · забота</div>
+                <h1>Ваш личный бухгалтер на связи</h1>
+                <p class="hero-desc">Помогаю предпринимателям вести учёт, сдавать отчётность и спокойно работать без страха перед налоговой.</p>
+                <div class="btn-group">
+                    <a href="#contact" class="btn"><i class="fas fa-comment-dots"></i> Задать вопрос</a>
+                    <a href="#calculator" class="btn btn-outline"><i class="fas fa-calculator"></i> Рассчитать стоимость</a>
+                </div>
+            </div>
+            <div class="hero-photo">
+                <!-- ГЛАВНОЕ ФОТО (реалистичное изображение женщины-бухгалтера) -->
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Юлия, главный бухгалтер" 
+                     style="width:100%; max-width:280px; border-radius:40px;">
+                <div class="photo-caption">✨ Юлия — 15 лет в бухгалтерии, ваш надёжный партнёр</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- РАЗДЕЛ 1: Обо мне -->
+    <section>
+        <div class="container">
+            <h2>Обо мне</h2>
+            <div style="max-width: 780px; margin: 20px auto 0; background: #FFF3ED; padding: 36px 32px; border-radius: 48px; text-align: center;">
+                <p style="font-size: 1.2rem; color: #5F463E;">Меня зовут Юлия. Я частный бухгалтер и уже <strong>15 лет</strong> помогаю ИП и небольшим компаниям вести бухгалтерию, сдавать отчётность и разбираться с налогами простым языком. Я всегда на связи, я всегда рядом.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- РАЗДЕЛ 2: Чем помогу -->
+    <section style="background: #FEF9F5;">
+        <div class="container">
+            <h2>Чем помогу</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-balance-scale"></i></div>
+                    <h3>Старт и консультации</h3>
+                    <ul>
+                        <li>подскажу что лучше открыть: ИП или ООО</li>
+                        <li>посоветую систему налогообложения</li>
+                        <li>помогу с первыми шагами в бизнесе</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <h3>Полное ведение учёта</h3>
+                    <ul>
+                        <li>бухгалтерский и кадровый учёт</li>
+                        <li>рассчитываю налоги и взносы</li>
+                        <li>сдаю декларации и отчётность</li>
+                        <li>подготавливаю платёжки</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-headset"></i></div>
+                    <h3>Поддержка 24/7</h3>
+                    <ul>
+                        <li>консультирую по важным вопросам</li>
+                        <li>объясняю простыми словами</li>
+                        <li>напоминаю о сроках</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- РАЗДЕЛ 3: Почему со мной удобно -->
+    <section>
+        <div class="container">
+            <h2>Почему со мной удобно</h2>
+            <div class="advantage-list">
+                <div class="advantage-item">🤝 не нужно держать бухгалтера в штате</div>
+                <div class="advantage-item">⏰ всегда напомню о сроках</div>
+                <div class="advantage-item">🗣️ объясняю простыми словами</div>
+                <div class="advantage-item">💻 можно работать полностью удалённо</div>
+                <div class="advantage-item">📂 беру на себя рутину</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- РАЗДЕЛ 4: КАЛЬКУЛЯТОР (с дополнительными услугами в одну колонку) -->
+    <section id="calculator">
+        <div class="container">
+            <h2>Калькулятор услуг</h2>
+            <div class="calculator-modern">
+                <!-- Форма бизнеса -->
+                <div class="calc-row">
+                    <div class="calc-label">Форма бизнеса</div>
+                    <select id="businessType">
+                        <option value="4000">ИП без сотрудников — 4 000 ₽</option>
+                        <option value="7000">ИП с сотрудниками — 7 000 ₽</option>
+                        <option value="10000">ООО без сотрудников — 10 000 ₽</option>
+                        <option value="14000">ООО с сотрудниками — 14 000 ₽</option>
+                    </select>
+                </div>
+                <!-- Система налогообложения -->
+                <div class="calc-row">
+                    <div class="calc-label">Система налогообложения</div>
+                    <select id="taxSystem">
+                        <option value="1.0">УСН 6% (коэф. 1.0)</option>
+                        <option value="1.2">УСН 15% (коэф. 1.2)</option>
+                        <option value="1.7">ОСНО (коэф. 1.7)</option>
+                        <option value="0.8">АУСН (коэф. 0.8)</option>
+                        <option value="0.9">Патент (коэф. 0.9)</option>
+                    </select>
+                </div>
+                <!-- Количество операций -->
+                <div class="calc-row">
+                    <div class="calc-label">Количество операций в месяц</div>
+                    <select id="operationsCount">
+                        <option value="0">до 30 (0 ₽)</option>
+                        <option value="3000">31–100 (+3 000 ₽)</option>
+                        <option value="7000">101–300 (+7 000 ₽)</option>
+                        <option value="12000">более 300 (+12 000 ₽)</option>
+                    </select>
+                </div>
+                <!-- Сотрудники (доплата) -->
+                <div class="calc-row">
+                    <div class="calc-label">Количество сотрудников (доплата)</div>
+                    <select id="employeesAdd">
+                        <option value="0">0 сотрудников (0 ₽)</option>
+                        <option value="3000">1–5 сотрудников (+3 000 ₽)</option>
+                        <option value="7000">6–15 сотрудников (+7 000 ₽)</option>
+                        <option value="12000">более 15 (+12 000 ₽)</option>
+                    </select>
+                </div>
+                <!-- ДОПОЛНИТЕЛЬНЫЕ УСЛУГИ: строго одна колонка с отступами -->
+                <div class="extra-services">
+                    <div class="calc-label" style="margin-bottom: 12px;">Дополнительные услуги</div>
+                    <div class="extra-services-list">
+                        <div class="extra-service-item"><input type="checkbox" id="servKadr" value="3000"> <label for="servKadr">Кадровый учет (+3 000 ₽)</label></div>
+                        <div class="extra-service-item"><input type="checkbox" id="servRestore" value="10000"> <label for="servRestore">Восстановление учета (+10 000 ₽)</label></div>
+                        <div class="extra-service-item"><input type="checkbox" id="servMarket" value="5000"> <label for="servMarket">Работа с маркетплейсами (+5 000 ₽)</label></div>
+                        <div class="extra-service-item"><input type="checkbox" id="servPayments" value="2000"> <label for="servPayments">Подготовка платежек (+2 000 ₽)</label></div>
+                        <div class="extra-service-item"><input type="checkbox" id="servConsult" value="2000"> <label for="servConsult">Консультации сверх тарифа (+2 000 ₽)</label></div>
+                    </div>
+                </div>
+
+                <div class="total-price-block">
+                    <div style="font-weight: 600; margin-bottom: 6px;">Итого стоимость обслуживания в месяц</div>
+                    <span id="totalPriceDisplay">0 ₽</span>
+                    <div class="price-note" style="font-size: 0.75rem; margin-top: 6px;">* Расчёт предварительный, финальная цена обсуждается</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- РАЗДЕЛ 5: Отзывы -->
+    <section style="background: #FFFBF5;">
+        <div class="container">
+            <h2>Отзывы клиентов</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-text">«Юлия стала настоящим спасением для моего ИП. Всегда на связи, понятно объясняет налоги. С ней я перестал бояться штрафов».</div>
+                    <div class="review-author" style="font-weight: 700; color: #BC7A6A;">— Андрей, ИП (доставка)</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-text">«Очень довольна сотрудничеством! Сдала отчётность вовремя, Юлия сама напоминала о платежах. Спокойствие и профессионализм».</div>
+                    <div class="review-author" style="font-weight: 700; color: #BC7A6A;">— Екатерина, ООО “Маркет студия”</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-text">«Рекомендую! После ухода со штатным бухгалтером нашли Юлию — дешевле и эффективнее. Спасибо за кадровый учёт».</div>
+                    <div class="review-author" style="font-weight: 700; color: #BC7A6A;">— Дмитрий, ИП (розница)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- РАЗДЕЛ 6: Контакты -->
+    <section id="contact">
+        <div class="container">
+            <h2>Контакты</h2>
+            <div class="contact-form">
+                <form id="callbackForm">
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 20px;">
+                        <div class="form-group" style="flex:1;"><input type="text" placeholder="Ваше имя" id="userName" required></div>
+                        <div class="form-group" style="flex:1;"><input type="tel" placeholder="Номер телефона" id="userPhone" required></div>
+                    </div>
+                    <div class="form-group">
+                        <select id="userTax">
+                            <option value="">Система налогообложения</option>
+                            <option>УСН 6%</option><option>УСН 15%</option><option>ОСНО</option><option>АУСН</option><option>Патент</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="3" placeholder="Ваш вопрос / описание задачи" id="userQuestion"></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="background: linear-gradient(135deg, #FFB7B2, #E29488);"><i class="fas fa-paper-plane"></i> Отправить запрос</button>
+                    <p style="margin-top: 18px; font-size: 0.8rem; text-align: center;">✨ Отвечу в течение нескольких часов. Работаю с ИП и ООО по всей России.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2025 Бухгалтер рядом — Юлия, ваш частный бухгалтер. Всегда на связи, всегда рядом.</p>
+        <p style="margin-top: 12px; font-size: 0.9rem;">📞 +7 (999) 123-45-67 | ✉️ buh@yuliya.ru | Telegram: @buh_ryadom</p>
+    </div>
+</footer>
+
+<script>
+    // Калькулятор: все элементы
+    const businessSelect = document.getElementById('businessType');
+    const taxSelect = document.getElementById('taxSystem');
+    const opsSelect = document.getElementById('operationsCount');
+    const empSelect = document.getElementById('employeesAdd');
+    const checkboxes = ['servKadr', 'servRestore', 'servMarket', 'servPayments', 'servConsult'];
+    const totalSpan = document.getElementById('totalPriceDisplay');
+
+    function calcTotal() {
+        let base = parseInt(businessSelect.value);
+        let taxCoef = parseFloat(taxSelect.value);
+        let opsAdd = parseInt(opsSelect.value);
+        let empAdd = parseInt(empSelect.value);
+        let extras = 0;
+        checkboxes.forEach(id => {
+            if(document.getElementById(id).checked) {
+                extras += parseInt(document.getElementById(id).value);
+            }
+        });
+        let total = Math.round(base * taxCoef + opsAdd + empAdd + extras);
+        totalSpan.innerText = total.toLocaleString() + ' ₽';
+    }
+    businessSelect.addEventListener('change', calcTotal);
+    taxSelect.addEventListener('change', calcTotal);
+    opsSelect.addEventListener('change', calcTotal);
+    empSelect.addEventListener('change', calcTotal);
+    checkboxes.forEach(id => {
+        document.getElementById(id).addEventListener('change', calcTotal);
+    });
+    calcTotal();
+
+    // Форма обратной связи
+    const form = document.getElementById('callbackForm');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('userName').value.trim();
+        const phone = document.getElementById('userPhone').value.trim();
+        if(!name || !phone) {
+            alert("Пожалуйста, укажите имя и телефон для связи :)");
+            return;
+        }
+        alert(`Спасибо, ${name}! Ваш запрос принят. Я Юлия, свяжусь с вами по номеру ${phone} в ближайшее время.`);
+        form.reset();
+    });
+</script>
+</body>
+</html>
